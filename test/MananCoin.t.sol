@@ -15,7 +15,6 @@ contract MananCoinTest is Test {
         mananCoin.mint(address(this), 100);
         assertEq(mananCoin.balanceOf(address(this)), 100);
 
-
         assertEq(mananCoin.balanceOf(0x87eDE136CDECc6a94e764d244377C7Dd80d4683c), 0);
         mananCoin.mint(0x87eDE136CDECc6a94e764d244377C7Dd80d4683c, 100);
         assertEq(mananCoin.balanceOf(0x87eDE136CDECc6a94e764d244377C7Dd80d4683c), 100);
@@ -50,7 +49,20 @@ contract MananCoinTest is Test {
         assertEq(mananCoin.allowance(address(this), 0x87eDE136CDECc6a94e764d244377C7Dd80d4683c), 25);
     }
 
-    function test_FailApprovals() public {
+    function test_Revert_When_FailApprovals() public {
+        mananCoin.mint(address(this), 100);
+        mananCoin.approve(0x87eDE136CDECc6a94e764d244377C7Dd80d4683c, 10);
 
+        vm.prank(0x87eDE136CDECc6a94e764d244377C7Dd80d4683c);
+
+        vm.expectRevert();
+        mananCoin.transferFrom(address(this), 0x604034FC78917233c4facc9220B600820eF3fC91, 20);
+    }
+
+    function test_Revert_When_NoBalance() public {
+        mananCoin.mint(address(this), 10);
+
+        vm.expectRevert();
+        mananCoin.transfer(0x604034FC78917233c4facc9220B600820eF3fC91, 20);
     }
 }

@@ -51,6 +51,10 @@ $ anvil
 $ forge script script/MananCoin.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
 ```
 
+```shell
+$ forge create --rpc-url <RPC_URL>  --private-key <PRIVATE_KEY>  src/MananCoin.sol:MananCoin --broadcast
+```
+
 ### Cast
 
 ```shell

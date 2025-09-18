@@ -8,8 +8,7 @@ contract MananCoinTest is Test {
     MananCoin public mananCoin;
     event Transfer(address indexed from, address indexed to, uint256 value);
     event Approval(address indexed owner, address indexed spender, uint256 value);
-https://eth-sepolia.g.alchemy.com/v2/XwzujvPWu7KpuUEHuzunHnzcwF0CYqpo
-55732426973be10d3a7006277b8ee8f68c0c92e25c2b9baf09cd7d6558a70755
+
     function setUp() public {
         mananCoin = new MananCoin();
     }
